@@ -37,7 +37,7 @@ class CApiSimpleChatManager extends AApiManager
 	 */
 	public function GetPostsCount()
 	{
-		return $this->oEavManager->getObjectsCount('CSimpleChatPost', array());
+		return $this->oEavManager->getEntitiesCount('CSimpleChatPost', array());
 	}
 	
 	/**
@@ -52,7 +52,7 @@ class CApiSimpleChatManager extends AApiManager
 		$aResult = array();
 		try
 		{
-			$aResults = $this->oEavManager->getObjects(
+			$aResults = $this->oEavManager->getEntities(
 				'CSimpleChatPost', 
 				array(
 					'UserId', 'Text', 'Date'
@@ -114,7 +114,7 @@ class CApiSimpleChatManager extends AApiManager
 			$oNewPost->UserId = $iUserId;
 			$oNewPost->Text = $sText;
 			$oNewPost->Date = $sDate;
-			if (!$this->oEavManager->saveObject($oNewPost))
+			if (!$this->oEavManager->saveEntity($oNewPost))
 			{
 				throw new CApiManagerException(Errs::UsersManager_UserCreateFailed);
 			}

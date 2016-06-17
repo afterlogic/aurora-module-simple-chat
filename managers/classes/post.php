@@ -9,7 +9,7 @@
  * @package SimpleChat
  * @subpackage Classes
  */
-class CSimpleChatPost extends APropertyBag
+class CSimpleChatPost extends AEntity
 {
 	public function __construct($sModule)
 	{
