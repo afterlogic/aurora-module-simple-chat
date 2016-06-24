@@ -25,7 +25,7 @@ class CApiSimpleChatManager extends AApiManager
 	{
 		parent::__construct('', $oManager, $oModule);
 		
-		$this->oEavManager = \CApi::GetCoreManager('eav', 'db');
+		$this->oEavManager = \CApi::GetSystemManager('eav', 'db');
 
 		$this->incClass('post');
 	}
