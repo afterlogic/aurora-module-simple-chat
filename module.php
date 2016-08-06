@@ -17,7 +17,7 @@ class SimpleChatModule extends AApiModule
 	/**
 	 * Obtains settings of the Simple Chat Module.
 	 * 
-	 * @param \CUser $oUser Object of the loggined user.
+	 * @param \CUser $oUser Object of the authenticated user.
 	 * @return array
 	 */
 	public function GetAppData($oUser = null)
@@ -35,7 +35,7 @@ class SimpleChatModule extends AApiModule
 	 */
 	public function UpdateSettings($EnableModule)
 	{
-		$iUserId = \CApi::getLogginedUserId();
+		$iUserId = \CApi::getAuthenticatedUserId();
 		if (0 < $iUserId)
 		{
 			$oCoreDecorator = \CApi::GetModuleDecorator('Core');
@@ -69,7 +69,7 @@ class SimpleChatModule extends AApiModule
 	}
 
 	/**
-	 * Creates a new post for loggined user.
+	 * Creates a new post for authenticated user.
 	 * 
 	 * @param string $Text text of the new post.
 	 * @param string $Date date of the new post.
@@ -77,7 +77,7 @@ class SimpleChatModule extends AApiModule
 	 */
 	public function CreatePost($Text, $Date)
 	{
-		$iUserId = \CApi::getLogginedUserId();
+		$iUserId = \CApi::getAuthenticatedUserId();
 		$this->oApiChatManager->CreatePost($iUserId, $Text, $Date);
 		return true;
 	}	
