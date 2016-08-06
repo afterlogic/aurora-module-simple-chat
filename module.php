@@ -17,14 +17,19 @@ class SimpleChatModule extends AApiModule
 	/**
 	 * Obtains settings of the Simple Chat Module.
 	 * 
-	 * @param \CUser $oUser Object of the authenticated user.
 	 * @return array
 	 */
-	public function GetAppData($oUser = null)
+	public function GetAppData()
 	{
-		return array(
-			'EnableModule' => $oUser->{$this->GetName().'::EnableModule'}
-		);
+		$oUser = \CApi::getAuthenticatedUser();
+		if ($oUser && $oUser->Role === 1)
+		{
+			return array(
+				'EnableModule' => $oUser->{$this->GetName().'::EnableModule'}
+			);
+		}
+		
+		return null;
 	}
 	
 	/**
