@@ -22,7 +22,7 @@ class SimpleChatModule extends AApiModule
 	public function GetAppData()
 	{
 		$oUser = \CApi::getAuthenticatedUser();
-		if (!empty($oUser) && $oUser->Role === \EUserRole::PowerUser)
+		if (!empty($oUser) && $oUser->Role === \EUserRole::NormalUser)
 		{
 			return array(
 				'EnableModule' => $oUser->{$this->GetName().'::EnableModule'}
