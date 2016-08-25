@@ -21,6 +21,8 @@ class SimpleChatModule extends AApiModule
 	 */
 	public function GetAppData()
 	{
+		\CApi::checkUserRoleIsAtLeast(\EUserRole::Anonymous);
+		
 		$oUser = \CApi::getAuthenticatedUser();
 		if (!empty($oUser) && $oUser->Role === \EUserRole::NormalUser)
 		{
@@ -40,6 +42,8 @@ class SimpleChatModule extends AApiModule
 	 */
 	public function UpdateSettings($EnableModule)
 	{
+		\CApi::checkUserRoleIsAtLeast(\EUserRole::NormalUser);
+		
 		$iUserId = \CApi::getAuthenticatedUserId();
 		if (0 < $iUserId)
 		{
@@ -53,6 +57,8 @@ class SimpleChatModule extends AApiModule
 	
 	public function GetPostsCount()
 	{
+		\CApi::checkUserRoleIsAtLeast(\EUserRole::Customer);
+		
 		return $this->oApiChatManager->GetPostsCount();
 	}
 	
@@ -65,6 +71,8 @@ class SimpleChatModule extends AApiModule
 	 */
 	public function GetPosts($Offset, $Limit)
 	{
+		\CApi::checkUserRoleIsAtLeast(\EUserRole::Customer);
+		
 		$aPosts = $this->oApiChatManager->GetPosts($Offset, $Limit);
 		return array(
 			'Offset' => $Offset,
@@ -82,6 +90,8 @@ class SimpleChatModule extends AApiModule
 	 */
 	public function CreatePost($Text, $Date)
 	{
+		\CApi::checkUserRoleIsAtLeast(\EUserRole::NormalUser);
+		
 		$iUserId = \CApi::getAuthenticatedUserId();
 		$this->oApiChatManager->CreatePost($iUserId, $Text, $Date);
 		return true;
