@@ -74,7 +74,7 @@ class CApiSimpleChatManager extends AApiManager
 						$oUser = $oCoreDecorator->GetUser($oItem->UserId);
 						if ($oUser)
 						{
-							$aUsers[$oItem->UserId] = $oUser->Name;
+							$aUsers[$oItem->UserId] = $oUser->PublicId;
 						}
 					}
 					if (isset($aUsers[$oItem->UserId]))
