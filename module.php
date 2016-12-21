@@ -15,7 +15,7 @@ class SimpleChatModule extends AApiModule
 	}
 	
 	/**
-	 * Obtaines list of module settings for authenticated user.
+	 * Obtains list of module settings for authenticated user.
 	 * 
 	 * @return array
 	 */
