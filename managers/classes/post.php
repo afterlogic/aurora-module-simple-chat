@@ -33,13 +33,11 @@ class CSimpleChatPost extends AEntity
 
 		$this->__USE_TRIM_IN_STRINGS__ = true;
 		
-		$this->aStaticMap = array(
+		$this->setStaticMap(array(
 			'UserId'	=> array('int', 0),
 			'Text'		=> array('text', ''),
 			'Date'		=> array('datetime', '')
-		);
-		
-		$this->SetDefaults();
+		));
 	}
 	
 	public static function createInstance($sModule = 'SimpleChat')
