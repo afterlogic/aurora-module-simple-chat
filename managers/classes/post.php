@@ -25,7 +25,7 @@
  * @package SimpleChat
  * @subpackage Classes
  */
-class CSimpleChatPost extends AEntity
+class CSimpleChatPost extends CEntity
 {
 	protected $aStaticMap = array(
 		'UserId'	=> array('int', 0),
