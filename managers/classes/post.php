@@ -31,8 +31,6 @@ class CSimpleChatPost extends AEntity
 	{
 		parent::__construct(get_class($this), $sModule);
 
-		$this->__USE_TRIM_IN_STRINGS__ = true;
-		
 		$this->setStaticMap(array(
 			'UserId'	=> array('int', 0),
 			'Text'		=> array('text', ''),
