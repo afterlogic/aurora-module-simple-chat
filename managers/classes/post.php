@@ -27,19 +27,9 @@
  */
 class CSimpleChatPost extends AEntity
 {
-	public function __construct($sModule)
-	{
-		parent::__construct(get_class($this), $sModule);
-
-		$this->setStaticMap(array(
-			'UserId'	=> array('int', 0),
-			'Text'		=> array('text', ''),
-			'Date'		=> array('datetime', '')
-		));
-	}
-	
-	public static function createInstance($sModule = 'SimpleChat')
-	{
-		return new CSimpleChatPost($sModule);
-	}
+	protected $aStaticMap = array(
+		'UserId'	=> array('int', 0),
+		'Text'		=> array('text', ''),
+		'Date'		=> array('datetime', '')
+	);
 }
