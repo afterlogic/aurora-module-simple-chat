@@ -1,6 +1,8 @@
 <?php
 
-class SimpleChatModule extends AApiModule
+namespace Aurora\Modules;
+
+class SimpleChatModule extends \AApiModule
 {
 	public $oApiChatManager = null;
 	
