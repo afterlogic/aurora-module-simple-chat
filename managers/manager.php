@@ -24,7 +24,7 @@
  * @package SimpleChat
  */
 
-class CApiSimpleChatManager extends AApiManager
+class CApiSimpleChatManager extends \Aurora\System\AbstractManager
 {
 	/**
 	 * @var CApiEavManager
@@ -33,15 +33,15 @@ class CApiSimpleChatManager extends AApiManager
 	
 	/**
 	 * 
-	 * @param CApiGlobalManager &$oManager
+	 * @param \Aurora\System\GlobalManager &$oManager
 	 * @param string $sForcedStorage
-	 * @param AApiModule $oModule
+	 * @param \Aurora\System\AbstractModule $oModule
 	 */
-	public function __construct(CApiGlobalManager &$oManager, $sForcedStorage = '', AApiModule $oModule = null)
+	public function __construct(\Aurora\System\GlobalManager &$oManager, $sForcedStorage = '', \Aurora\System\AbstractModule $oModule = null)
 	{
 		parent::__construct('', $oManager, $oModule);
 		
-		$this->oEavManager = \CApi::GetSystemManager('eav', 'db');
+		$this->oEavManager = \Aurora\System\Api::GetSystemManager('eav', 'db');
 
 		$this->incClass('post');
 	}
@@ -82,7 +82,7 @@ class CApiSimpleChatManager extends AApiManager
 
 			if (is_array($aResults))
 			{
-				$oCoreDecorator = \CApi::GetModuleDecorator('Core');
+				$oCoreDecorator = \Aurora\System\Api::GetModuleDecorator('Core');
 				foreach($aResults as $oItem)
 				{
 					if (!isset($aUsers[$oItem->UserId]))
@@ -132,7 +132,7 @@ class CApiSimpleChatManager extends AApiManager
 			$oNewPost->Date = $sDate;
 			if (!$this->oEavManager->saveEntity($oNewPost))
 			{
-				throw new CApiManagerException(Errs::UsersManager_UserCreateFailed);
+				throw new \CApiManagerException(Errs::UsersManager_UserCreateFailed);
 			}
 		}
 		catch (CApiBaseException $oException)

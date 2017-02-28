@@ -2,7 +2,7 @@
 
 namespace Aurora\Modules;
 
-class SimpleChatModule extends \AApiModule
+class SimpleChatModule extends \Aurora\System\AbstractModule
 {
 	public $oApiChatManager = null;
 	
@@ -23,9 +23,9 @@ class SimpleChatModule extends \AApiModule
 	 */
 	public function GetSettings()
 	{
-		\CApi::checkUserRoleIsAtLeast(\EUserRole::Anonymous);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::Anonymous);
 		
-		$oUser = \CApi::getAuthenticatedUser();
+		$oUser = \Aurora\System\Api::getAuthenticatedUser();
 		if (!empty($oUser) && $oUser->Role === \EUserRole::NormalUser)
 		{
 			return array(
@@ -44,12 +44,12 @@ class SimpleChatModule extends \AApiModule
 	 */
 	public function UpdateSettings($EnableModule)
 	{
-		\CApi::checkUserRoleIsAtLeast(\EUserRole::NormalUser);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::NormalUser);
 		
-		$iUserId = \CApi::getAuthenticatedUserId();
+		$iUserId = \Aurora\System\Api::getAuthenticatedUserId();
 		if (0 < $iUserId)
 		{
-			$oCoreDecorator = \CApi::GetModuleDecorator('Core');
+			$oCoreDecorator = \Aurora\System\Api::GetModuleDecorator('Core');
 			$oUser = $oCoreDecorator->GetUser($iUserId);
 			$oUser->{$this->GetName().'::EnableModule'} = $EnableModule;
 			$oCoreDecorator->UpdateUserObject($oUser);
@@ -59,7 +59,7 @@ class SimpleChatModule extends \AApiModule
 	
 	public function GetPostsCount()
 	{
-		\CApi::checkUserRoleIsAtLeast(\EUserRole::Customer);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::Customer);
 		
 		return $this->oApiChatManager->GetPostsCount();
 	}
@@ -73,7 +73,7 @@ class SimpleChatModule extends \AApiModule
 	 */
 	public function GetPosts($Offset, $Limit)
 	{
-		\CApi::checkUserRoleIsAtLeast(\EUserRole::Customer);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::Customer);
 		
 		$aPosts = $this->oApiChatManager->GetPosts($Offset, $Limit);
 		return array(
@@ -92,9 +92,9 @@ class SimpleChatModule extends \AApiModule
 	 */
 	public function CreatePost($Text, $Date)
 	{
-		\CApi::checkUserRoleIsAtLeast(\EUserRole::NormalUser);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::NormalUser);
 		
-		$iUserId = \CApi::getAuthenticatedUserId();
+		$iUserId = \Aurora\System\Api::getAuthenticatedUserId();
 		$this->oApiChatManager->CreatePost($iUserId, $Text, $Date);
 		return true;
 	}	
