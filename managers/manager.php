@@ -105,7 +105,7 @@ class CApiSimpleChatManager extends \Aurora\System\AbstractManager
 				}
 			}
 		}
-		catch (CApiBaseException $oException)
+		catch (\Aurora\System\Exceptions\BaseException $oException)
 		{
 			$aResult = false;
 			$this->setLastException($oException);
@@ -132,10 +132,10 @@ class CApiSimpleChatManager extends \Aurora\System\AbstractManager
 			$oNewPost->Date = $sDate;
 			if (!$this->oEavManager->saveEntity($oNewPost))
 			{
-				throw new \CApiManagerException(Errs::UsersManager_UserCreateFailed);
+				throw new \Aurora\System\Exceptions\ManagerException(Errs::UsersManager_UserCreateFailed);
 			}
 		}
-		catch (CApiBaseException $oException)
+		catch (\Aurora\System\Exceptions\BaseException $oException)
 		{
 			$bResult = false;
 			$this->setLastException($oException);
