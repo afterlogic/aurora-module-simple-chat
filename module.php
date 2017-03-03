@@ -2,7 +2,7 @@
 
 namespace Aurora\Modules;
 
-class SimpleChatModule extends \Aurora\System\AbstractModule
+class SimpleChatModule extends \Aurora\System\Module\AbstractModule
 {
 	public $oApiChatManager = null;
 	
