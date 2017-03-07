@@ -24,7 +24,7 @@
  * @package SimpleChat
  */
 
-class CApiSimpleChatManager extends \Aurora\System\AbstractManager
+class CApiSimpleChatManager extends \Aurora\System\Managers\AbstractManager
 {
 	/**
 	 * @var CApiEavManager
@@ -33,11 +33,11 @@ class CApiSimpleChatManager extends \Aurora\System\AbstractManager
 	
 	/**
 	 * 
-	 * @param \Aurora\System\GlobalManager &$oManager
+	 * @param \Aurora\System\Managers\GlobalManager &$oManager
 	 * @param string $sForcedStorage
 	 * @param \Aurora\System\Module\AbstractModule $oModule
 	 */
-	public function __construct(\Aurora\System\GlobalManager &$oManager, $sForcedStorage = '', \Aurora\System\Module\AbstractModule $oModule = null)
+	public function __construct(\Aurora\System\Managers\GlobalManager &$oManager, $sForcedStorage = '', \Aurora\System\Module\AbstractModule $oModule = null)
 	{
 		parent::__construct('', $oManager, $oModule);
 		
