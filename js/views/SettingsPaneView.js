@@ -26,7 +26,7 @@ function CSettingsPaneView()
 _.extendOwn(CSettingsPaneView.prototype, CAbstractSettingsFormView.prototype);
 
 /**
- * Name of template that will be binded to this JS-object. 'SimpleChatWebclient' - name of the object,
+ * Name of template that will be bound to this JS-object. 'SimpleChatWebclient' - name of the object,
  * 'SettingsPaneView' - name of template file in 'templates' folder.
  */
 CSettingsPaneView.prototype.ViewTemplate = '%ModuleName%_SettingsPaneView';
