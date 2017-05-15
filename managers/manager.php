@@ -82,6 +82,10 @@ class CApiSimpleChatManager extends \Aurora\System\Managers\AbstractManager
 						{
 							$aUsers[$oItem->UserId] = $oUser->PublicId;
 						}
+						else
+						{
+							$aUsers[$oItem->UserId] = '';
+						}
 					}
 					if (isset($aUsers[$oItem->UserId]))
 					{
