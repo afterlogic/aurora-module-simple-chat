@@ -34,10 +34,10 @@ class Module extends \Aurora\System\Module\AbstractModule
 	 */
 	public function GetSettings()
 	{
-		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::Anonymous);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::Anonymous);
 		
 		$oUser = \Aurora\System\Api::getAuthenticatedUser();
-		if (!empty($oUser) && $oUser->Role === \EUserRole::NormalUser)
+		if (!empty($oUser) && $oUser->Role === \Aurora\System\Enums\UserRole::NormalUser)
 		{
 			return array(
 				'EnableModule' => $oUser->{$this->GetName().'::EnableModule'}
@@ -55,7 +55,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 	 */
 	public function UpdateSettings($EnableModule)
 	{
-		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::NormalUser);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::NormalUser);
 		
 		$iUserId = \Aurora\System\Api::getAuthenticatedUserId();
 		if (0 < $iUserId)
@@ -70,7 +70,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 	
 	public function GetPostsCount()
 	{
-		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::Customer);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::Customer);
 		
 		return $this->oApiChatManager->GetPostsCount();
 	}
@@ -84,7 +84,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 	 */
 	public function GetPosts($Offset, $Limit)
 	{
-		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::Customer);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::Customer);
 		
 		$aPosts = $this->oApiChatManager->GetPosts($Offset, $Limit);
 		return array(
@@ -103,7 +103,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 	 */
 	public function CreatePost($Text, $Date)
 	{
-		\Aurora\System\Api::checkUserRoleIsAtLeast(\EUserRole::NormalUser);
+		\Aurora\System\Api::checkUserRoleIsAtLeast(\Aurora\System\Enums\UserRole::NormalUser);
 		
 		$iUserId = \Aurora\System\Api::getAuthenticatedUserId();
 		$this->oApiChatManager->CreatePost($iUserId, $Text, $Date);
