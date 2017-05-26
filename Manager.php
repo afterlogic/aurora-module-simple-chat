@@ -71,7 +71,7 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 
 			if (is_array($aResults))
 			{
-				$oCoreDecorator = \Aurora\System\Api::GetModuleDecorator('Core');
+				$oCoreDecorator = \Aurora\Modules\Core\Module::Decorator();
 				foreach($aResults as $oItem)
 				{
 					if (!isset($aUsers[$oItem->UserId]))

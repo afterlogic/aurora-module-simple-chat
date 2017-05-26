@@ -61,7 +61,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 		$iUserId = \Aurora\System\Api::getAuthenticatedUserId();
 		if (0 < $iUserId)
 		{
-			$oCoreDecorator = \Aurora\System\Api::GetModuleDecorator('Core');
+			$oCoreDecorator = \Aurora\Modules\Core\Module::Decorator();
 			$oUser = $oCoreDecorator->GetUser($iUserId);
 			$oUser->{$this->GetName().'::EnableModule'} = $EnableModule;
 			$oCoreDecorator->UpdateUserObject($oUser);
