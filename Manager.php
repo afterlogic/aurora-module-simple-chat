@@ -58,7 +58,7 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 		try
 		{
 			$aResults = $this->oEavManager->getEntities(
-				'CSimpleChatPost', 
+				'\\Aurora\\Modules\\SimpleChat\\Classes\\CSimpleChatPost', 
 				array(
 					'UserId', 'Text', 'Date'
 				),
@@ -119,7 +119,7 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 		$bResult = true;
 		try
 		{
-			$oNewPost = new \CSimpleChatPost($this->GetModule()->GetName());
+			$oNewPost = new Classes\CSimpleChatPost($this->GetModule()->GetName());
 			$oNewPost->UserId = $iUserId;
 			$oNewPost->Text = $sText;
 			$oNewPost->Date = $sDate;
