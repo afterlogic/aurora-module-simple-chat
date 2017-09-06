@@ -21,7 +21,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 	{
 		$this->oApiChatManager = new Manager('', $this);
 		
-		$this->extendObject('CUser', array(
+		$this->extendObject('Aurora\Modules\Core\Classes\User', array(
 				'EnableModule' => array('bool', true)
 			)
 		);
