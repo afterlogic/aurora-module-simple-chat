@@ -19,7 +19,7 @@ namespace Aurora\Modules\SimpleChat\Classes;
  * @package SimpleChat
  * @subpackage Classes
  */
-class CSimpleChatPost extends \Aurora\System\EAV\Entity
+class Post extends \Aurora\System\EAV\Entity
 {
 	protected $aStaticMap = array(
 		'UserId'	=> array('int', 0),

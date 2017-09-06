@@ -42,7 +42,9 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 	 */
 	public function GetPostsCount()
 	{
-		return $this->oEavManager->getEntitiesCount('CSimpleChatPost', array());
+		return $this->oEavManager->getEntitiesCount(
+			__NAMESPACE__ . '\Classes\Post', array()
+		);
 	}
 	
 	/**
@@ -58,7 +60,7 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 		try
 		{
 			$aResults = $this->oEavManager->getEntities(
-				'\\Aurora\\Modules\\SimpleChat\\Classes\\CSimpleChatPost', 
+				__NAMESPACE__ . '\Classes\Post',
 				array(
 					'UserId', 'Text', 'Date'
 				),
@@ -119,7 +121,7 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 		$bResult = true;
 		try
 		{
-			$oNewPost = new Classes\CSimpleChatPost($this->GetModule()->GetName());
+			$oNewPost = new Classes\Post($this->GetModule()->GetName());
 			$oNewPost->UserId = $iUserId;
 			$oNewPost->Text = $sText;
 			$oNewPost->Date = $sDate;
