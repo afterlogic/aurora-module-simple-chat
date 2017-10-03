@@ -11,7 +11,9 @@ module.exports = function (oAppData) {
 			TextUtils = require('%PathToCoreWebclientModule%/js/utils/Text.js'),
 
 			Settings = require('modules/%ModuleName%/js/Settings.js'),
-			oSettings = _.extend({}, oAppData[Settings.ServerModuleName] || {}, oAppData['%ModuleName%'] || {})
+			oSettings = _.extend({}, oAppData[Settings.ServerModuleName] || {}, oAppData['%ModuleName%'] || {}),
+			
+			HeaderItemView = null
 		;
 
 		Settings.init(oSettings);
@@ -47,10 +49,14 @@ module.exports = function (oAppData) {
 			 * @returns {Object}
 			 */
 			getHeaderItem: function () {
-				var CHeaderItemView = require('%PathToCoreWebclientModule%/js/views/CHeaderItemView.js');
+				if (HeaderItemView === null)
+				{
+					var CHeaderItemView = require('%PathToCoreWebclientModule%/js/views/CHeaderItemView.js');
+					HeaderItemView = new CHeaderItemView(TextUtils.i18n('%MODULENAME%/ACTION_SHOW_CHAT'));
+				}
 
 				return {
-					item: new CHeaderItemView(TextUtils.i18n('%MODULENAME%/ACTION_SHOW_CHAT')),
+					item: HeaderItemView,
 					name: Settings.HashModuleName
 				};
 			}
