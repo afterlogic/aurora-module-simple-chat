@@ -154,7 +154,7 @@ CSimpleChatView.prototype.getPosts = function ()
 CSimpleChatView.prototype.addPost = function (oPost, bEnd, bRecent)
 {
 	oPost.displayDate = this.getDisplayDate(moment.utc(oPost.date));
-	oPost.displayText = oPost.text;
+	oPost.displayText = TextUtils.encodeHtml(oPost.text);
 
 	App.broadcastEvent('SimpleChat::DisplayPost::before', {'Post': oPost, 'Recent': bRecent});
 	
