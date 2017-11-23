@@ -16,27 +16,27 @@ var
  * 
  * @constructor
  */
-function CSettingsPaneView()
+function CSimpleChatSettingsFormView()
 {
 	CAbstractSettingsFormView.call(this, Settings.ServerModuleName);
 
 	this.enableModule = ko.observable(Settings.enableModule());
 }
 
-_.extendOwn(CSettingsPaneView.prototype, CAbstractSettingsFormView.prototype);
+_.extendOwn(CSimpleChatSettingsFormView.prototype, CAbstractSettingsFormView.prototype);
 
 /**
  * Name of template that will be bound to this JS-object. 'SimpleChatWebclient' - name of the object,
- * 'SettingsPaneView' - name of template file in 'templates' folder.
+ * 'SimpleChatSettingsFormView' - name of template file in 'templates' folder.
  */
-CSettingsPaneView.prototype.ViewTemplate = '%ModuleName%_SettingsPaneView';
+CSimpleChatSettingsFormView.prototype.ViewTemplate = '%ModuleName%_SimpleChatSettingsFormView';
 
 /**
  * Returns array with all settings values wich is used for indicating if there were changes on the page.
  * 
  * @returns {Array} Array with all settings values;
  */
-CSettingsPaneView.prototype.getCurrentValues = function ()
+CSimpleChatSettingsFormView.prototype.getCurrentValues = function ()
 {
 	return [
 		this.enableModule()
@@ -46,7 +46,7 @@ CSettingsPaneView.prototype.getCurrentValues = function ()
 /**
  * Reverts all settings values to global ones.
  */
-CSettingsPaneView.prototype.revertGlobalValues = function ()
+CSimpleChatSettingsFormView.prototype.revertGlobalValues = function ()
 {
 	this.enableModule(Settings.enableModule());
 };
@@ -56,7 +56,7 @@ CSettingsPaneView.prototype.revertGlobalValues = function ()
  * 
  * @returns Object
  */
-CSettingsPaneView.prototype.getParametersForSave = function ()
+CSimpleChatSettingsFormView.prototype.getParametersForSave = function ()
 {
 	return {
 		'EnableModule': this.enableModule()
@@ -68,9 +68,9 @@ CSettingsPaneView.prototype.getParametersForSave = function ()
  * 
  * @param {Object} oParameters Parameters with new values which were passed to the server.
  */
-CSettingsPaneView.prototype.applySavedValues = function (oParameters)
+CSimpleChatSettingsFormView.prototype.applySavedValues = function (oParameters)
 {
 	Settings.update(oParameters.EnableModule);
 };
 
-module.exports = new CSettingsPaneView();
+module.exports = new CSimpleChatSettingsFormView();
