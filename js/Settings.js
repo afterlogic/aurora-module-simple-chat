@@ -1,6 +1,11 @@
 'use strict';
 
-var ko = require('knockout');
+var
+	ko = require('knockout'),
+	_ = require('underscore'),
+	
+	Types = require('%PathToCoreWebclientModule%/js/utils/Types.js')
+;
 
 module.exports = {
 	ServerModuleName: '%ModuleName%',
@@ -14,14 +19,17 @@ module.exports = {
 	enableModule: ko.observable(false),
 	
 	/**
-	 * Initializes settings of simple chat module.
+	 * Initializes settings from AppData object sections.
 	 * 
-	 * @param {Object} oAppDataSection Simple chat module section in AppData.
+	 * @param {Object} oAppData Object contained modules settings.
 	 */
-	init: function (oAppDataSection) {
-		if (oAppDataSection)
+	init: function (oAppData)
+	{
+		var oAppDataSection = oAppData['%ModuleName%'];
+		
+		if (!_.isEmpty(oAppDataSection))
 		{
-			this.enableModule(!!oAppDataSection.EnableModule);
+			this.enableModule(Types.pBool(oAppDataSection.EnableModule, this.enableModule()));
 		}
 	},
 	
@@ -30,7 +38,8 @@ module.exports = {
 	 * 
 	 * @param {boolean} bEnableModule New value of setting 'EnableModule'
 	 */
-	update: function (bEnableModule) {
+	update: function (bEnableModule)
+	{
 		this.enableModule(bEnableModule);
 	}
 };

@@ -6,17 +6,14 @@ module.exports = function (oAppData) {
 	if (App.getUserRole() === Enums.UserRole.NormalUser || App.getUserRole() === Enums.UserRole.Customer)
 	{
 		var
-			_ = require('underscore'),
-
 			TextUtils = require('%PathToCoreWebclientModule%/js/utils/Text.js'),
 
 			Settings = require('modules/%ModuleName%/js/Settings.js'),
-			oSettings = _.extend({}, oAppData[Settings.ServerModuleName] || {}, oAppData['%ModuleName%'] || {}),
 			
 			HeaderItemView = null
 		;
 
-		Settings.init(oSettings);
+		Settings.init(oAppData);
 
 		return {
 			enableModule: Settings.enableModule,
