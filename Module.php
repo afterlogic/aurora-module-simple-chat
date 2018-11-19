@@ -22,12 +22,12 @@ class Module extends \Aurora\System\Module\AbstractModule
 	{
 		$this->oApiChatManager = new Manager($this);
 		
-		$this->extendObject(
-			'Aurora\Modules\Core\Classes\User', 
-			array(
+		\Aurora\Modules\Core\Classes\User::extend(
+			self::GetName(),
+			[
 				'EnableModule' => array('bool', true)
-			)
-		);
+			]
+		);		
 	}
 	
 	/**
@@ -43,7 +43,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 		if (!empty($oUser) && $oUser->Role === \Aurora\System\Enums\UserRole::NormalUser)
 		{
 			return array(
-				'EnableModule' => $oUser->{$this->GetName().'::EnableModule'}
+				'EnableModule' => $oUser->{$this::GetName().'::EnableModule'}
 			);
 		}
 		
@@ -65,7 +65,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 		{
 			$oCoreDecorator = \Aurora\Modules\Core\Module::Decorator();
 			$oUser = $oCoreDecorator->GetUser($iUserId);
-			$oUser->{$this->GetName().'::EnableModule'} = $EnableModule;
+			$oUser->{$this::GetName().'::EnableModule'} = $EnableModule;
 			$oCoreDecorator->UpdateUserObject($oUser);
 		}
 		return true;
