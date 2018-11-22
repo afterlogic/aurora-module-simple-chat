@@ -42,7 +42,7 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 	public function GetPostsCount()
 	{
 		return $this->oEavManager->getEntitiesCount(
-			$this->getModule()::getNamespace() . '\Classes\Post', array()
+			Module::getNamespace() . '\Classes\Post', array()
 		);
 	}
 	
@@ -59,7 +59,7 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 		try
 		{
 			$aResults = $this->oEavManager->getEntities(
-				$this->getModule()::getNamespace() . '\Classes\Post',
+				Module::getNamespace() . '\Classes\Post',
 				array(
 					'UserId', 'Text', 'Date'
 				),
@@ -120,7 +120,7 @@ class Manager extends \Aurora\System\Managers\AbstractManager
 		$bResult = true;
 		try
 		{
-			$oNewPost = new Classes\Post($this->GetModule()::GetName());
+			$oNewPost = new Classes\Post(Module::GetName());
 			$oNewPost->UserId = $iUserId;
 			$oNewPost->Text = $sText;
 			$oNewPost->Date = $sDate;
