@@ -12,8 +12,6 @@ namespace Aurora\Modules\SimpleChat;
  * @license https://afterlogic.com/products/common-licensing Afterlogic Software License
  * @copyright Copyright (c) 2019, Afterlogic Corp.
  *
- * CApiSimpleChatManager class summary
- *
  * @package SimpleChat
  */
 class Manager extends \Aurora\System\Managers\AbstractManager
