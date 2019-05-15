@@ -30,7 +30,7 @@ function CSimpleChatView()
 	 */
 	this.browserTitle = ko.observable(TextUtils.i18n('%MODULENAME%/HEADING_BROWSER_TAB'));
 	
-	this.bAllowReply = (App.getUserRole() === Enums.UserRole.NormalUser);
+	this.bAllowReply = App.isUserNormalOrTenant();
 	
 	this.posts = ko.observableArray([]);
 	this.gettingMore = ko.observable(false);
