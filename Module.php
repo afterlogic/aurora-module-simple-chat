@@ -64,7 +64,7 @@ class Module extends \Aurora\System\Module\AbstractModule
 		if (0 < $iUserId)
 		{
 			$oUser = \Aurora\Modules\Core\Module::Decorator()->GetUserUnchecked($iUserId);
-			$oUser->{$this::GetName().'::EnableModule'} = $EnableModule;
+			$oUser->setExtendedProp($this::GetName().'::EnableModule', $EnableModule);
 			\Aurora\Modules\Core\Module::Decorator()->UpdateUserObject($oUser);
 		}
 		return true;
